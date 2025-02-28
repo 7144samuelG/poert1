@@ -19,6 +19,8 @@ import { Color } from '@tiptap/extension-color'
 import Link from '@tiptap/extension-link'
 import TextAlign from '@tiptap/extension-text-align'
 
+import {FontSizeExtension} from "@/extensions/font-size"
+
 export const Editor = () => {
 
   const {setEditor}=useEditorStore();
@@ -78,6 +80,7 @@ export const Editor = () => {
       TableRow,
       TableHeader,
       TableCell,
+      FontSizeExtension,
       Image,
       ImageResize,
       TextStyle, 
