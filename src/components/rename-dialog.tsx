@@ -16,6 +16,7 @@ import {
 } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 interface RenamedialogProps {
   id: Id<"documents">;
@@ -39,7 +40,9 @@ export const RenameDialog = ({
     update({ documentid: id, title: title.trim() })
       .then(() => {
         setOpen(false);
+        toast.success("document updated")
       })
+      .catch(() => toast.error("something went wrong"))
       .finally(() => {
         setIsUpdating(false);
       });
@@ -47,7 +50,7 @@ export const RenameDialog = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent   onClick={(e) => e.stopPropagation()}>
+      <DialogContent onClick={(e) => e.stopPropagation()}>
         <form onSubmit={onSubmit}>
           <DialogHeader>
             <DialogTitle>Rename Document</DialogTitle>
